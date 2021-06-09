@@ -38,7 +38,7 @@ docker-compose up -d
 ansible-playbook ansible/playbook.yml -i ansible/hosts.ini --ask-vault-pass
 ```
 
-#### This website is available in "ozez.yohanndurand.fr"
+#### This website is available in "..."
 
 ## Testing 
 
