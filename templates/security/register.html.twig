@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<div id="page">
+    <div class="padding">
+
+        <h1>Inscription</h1>
+
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.password) }}
+            
+            <button class="btn btn-lg btn-primary">M'inscrire</button>
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
+{% endblock %}
