@@ -3,14 +3,32 @@
 {% block title %}Sygma{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1> ✅ Sygma Web Service</h1>
+<div class="container">
 
-    <p>TODO: List of service in beautiful card </p>
+    {% for service in services %}
+
+        <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ service.title }}</h5>
+            <p class="card-text">{{ service.description }}</p>
+            <h5>{{ service.price }}</h5> 
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        </div>
+
+    {% endfor %}
+    <br/> <br/> <br/>
+    <h3> To do : </h3>
+    
+    <ul>
+    <li> Revoir l'inscription ( bug ligne 44 security controller ) </li>
+    <li> Tester la connexion </li>
+    <li> Affichage des services par carte effectué </li>
+    <li> Premier formulaire de création de service effectué </li>
+    </ul>
+   
+
 </div>
 {% endblock %}
