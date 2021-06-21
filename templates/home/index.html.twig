@@ -14,7 +14,7 @@
             <h5 class="card-title">{{ service.title }}</h5>
             <p class="card-text">{{ service.description }}</p>
             <h5>{{ service.price }}</h5> 
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-primary">view product</a>
         </div>
         </div>
 

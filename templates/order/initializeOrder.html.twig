@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Initialiser une commande{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <h1>Passer commande </h1>
+    <p> Vous pouvez passer commande pour le produit : {{ service.title }}
+
+    <br/>
+    <br/>
+    <p> Voulez vous selectionner des options supplémentaires ? </p>
+
+    <p> Message pour le prestataire : </p>
+    <p>form</p>
+
+    <button><a href="{{ path('OrderPayment', {'id': service.id}) }}" class="btn btn-primary"> Payer la commande</a></button>
+  </div>
+{% endblock %}
