@@ -30,21 +30,38 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ path('home') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
+
+                {% if is_granted('ROLE_ADMIN') %}
+
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                    <a class="nav-link" href="#">Dashboard admin</a>
                 </li>
+                {% endif %}
+                
+                {% if is_granted('ROLE_USER') %}
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_logout') }}">logout</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                    <a class="nav-link" href="#">Mon compte</a>    
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Catégories</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('service_new') }}">Publié un service</a>    
                 </li>
+                {% else  %}
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                </li>
+         
+                 {% endif %}
                 </ul>
             </div>
         </nav>
