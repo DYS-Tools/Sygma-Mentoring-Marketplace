@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\ServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -91,4 +92,23 @@ class CategoryController extends AbstractController
 
         return $this->redirectToRoute('category_index');
     }
+
+    /**
+     * @Route("/service/{id}", name="service_of_category", methods={"GET"})
+     */
+    public function serviceOfCategory(Request $request, Category $category,ServiceRepository $serviceRepository,CategoryRepository $categoryRepository): Response
+    {
+        $serviceOfCategory = $serviceRepository->findBy( ['category'=> $category->getId() ]);
+
+        return $this->render('service/category.html.twig', [
+            'serviceOfCategory' => $serviceOfCategory,
+            'category' => $category,
+            'categories' => $categoryRepository->findAll(),
+        ]);
+    }
+
+
+
+
+    
 }
