@@ -4,42 +4,39 @@
 
 {% block body %}
 
+    {{ include('home/_nav_category.html.twig') }}
 
-{{ include('home/_nav_category.html.twig') }}
-
-
-
-<div class="container">
+    <div class="container">
 
 
-    <h2> Tout les services </h2>
-    <br/>
-    <br/>
+        <h2> Tout les services </h2>
+        <br/>
+        <br/>
 
-    {% for service in services %}
+        {% for service in services %}
 
-        <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{ service.title }}</h5>
-            <p class="card-text">{{ service.description }}</p>
-            <h5>{{ service.price }}</h5> 
-            <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-primary">view product</a>
-        </div>
-        </div>
+            <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ service.title }}</h5>
+                <p class="card-text">{{ service.description }}</p>
+                <h5>{{ service.price }}</h5> 
+                <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-primary">view product</a>
+            </div>
+            </div>
 
-    {% endfor %}
-    <br/> <br/> <br/>
-    <h3> To do : </h3>
+        {% endfor %}
+        <br/> <br/> <br/>
+        <h3> To do : </h3>
+        
+
+        <ul>
+        <li> Revoir l'inscription ( bug ligne 44 security controller ) </li>
+        <li> Tester la connexion </li>
+        <li> Affichage des services par carte effectué </li>
+        <li> Premier formulaire de création de service effectué </li>
+        </ul>
     
 
-    <ul>
-    <li> Revoir l'inscription ( bug ligne 44 security controller ) </li>
-    <li> Tester la connexion </li>
-    <li> Affichage des services par carte effectué </li>
-    <li> Premier formulaire de création de service effectué </li>
-    </ul>
-   
-
-</div>
+    </div>
 {% endblock %}

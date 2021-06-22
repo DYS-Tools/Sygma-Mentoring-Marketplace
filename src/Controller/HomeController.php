@@ -18,7 +18,6 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'services' => $serviceRepository->findAll(),
             'categories' => $categoryRepository->findAll(),
-            
 
         ]);
     }
