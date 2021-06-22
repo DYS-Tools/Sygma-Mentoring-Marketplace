@@ -4,6 +4,26 @@
 
 {% block body %}
 
+
+    <!-- Catégories nav -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+
+            {% for category in categories %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ category.name }}</a>    
+                </li>
+
+            {% endfor %}
+      
+            </ul>
+        </div>
+    </nav>
+
+
+
 <div class="container">
 
     {% for service in services %}
@@ -21,6 +41,7 @@
     {% endfor %}
     <br/> <br/> <br/>
     <h3> To do : </h3>
+    
     
     <ul>
     <li> Revoir l'inscription ( bug ligne 44 security controller ) </li>

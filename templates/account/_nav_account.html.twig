@@ -1,0 +1,36 @@
+<!-- account for user ( order, payout, service ) and account for admin ( stats... ) --> 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+        {% if is_granted('ROLE_ADMIN') %}
+        <li class="nav-item">
+            <a class="nav-link" href="#">Statistique</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Cash flow</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('category_index') }}">Gestion des services et des catégories</a>
+        </li>
+        {% endif %}
+        
+        {% if is_granted('ROLE_USER') %}
+
+        <li class="nav-item">
+            <a class="nav-link" href="#">Mes services</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#">Autre</a>    
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#">Autre</a>    
+        </li>
+        {% else  %}
+
+        {% endif %}
+        </ul>
+    </div>
+</nav>
