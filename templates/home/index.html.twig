@@ -4,7 +4,17 @@
 
 {% block body %}
 
+
+{{ include('home/_nav_category.html.twig') }}
+
+
+
 <div class="container">
+
+
+    <h2> Tout les services </h2>
+    <br/>
+    <br/>
 
     {% for service in services %}
 
@@ -22,6 +32,7 @@
     <br/> <br/> <br/>
     <h3> To do : </h3>
     
+
     <ul>
     <li> Revoir l'inscription ( bug ligne 44 security controller ) </li>
     <li> Tester la connexion </li>
