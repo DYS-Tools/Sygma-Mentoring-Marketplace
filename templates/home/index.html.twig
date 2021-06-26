@@ -16,25 +16,25 @@
         {% for service in services %}
 
             <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+            <img src="service/img/{{ service.image }}" class="card-img-top" alt="{{ service.title }}">
             <div class="card-body">
                 <h5 class="card-title">{{ service.title }}</h5>
                 <p class="card-text">{{ service.description }}</p>
                 <h5>{{ service.price }}</h5> 
-                <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-primary">view product</a>
+                <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-primary">Voir le service</a>
             </div>
             </div>
-
+        <br/>
         {% endfor %}
         <br/> <br/> <br/>
         <h3> To do : </h3>
         
 
         <ul>
-        <li> Revoir l'inscription ( bug ligne 44 security controller ) </li>
-        <li> Tester la connexion </li>
-        <li> Affichage des services par carte effectué </li>
-        <li> Premier formulaire de création de service effectué </li>
+        <li> Faire le paiement </li>
+        <li> Voir le dashboard user ( mes commandes en cours...) </li>
+        <li> Faire l'espace de service single </li>
+        <li> espace mon compte</li>
         </ul>
     
 

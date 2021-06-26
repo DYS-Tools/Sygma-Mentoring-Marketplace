@@ -10,7 +10,7 @@
         <p>{{ service.id }}</p>
         <p>{{ service.title }}</p>
         <p>{{ service.description }}</p>
-        <p>{{ service.image }}</p>
+        <img src="service/img/{{ service.image }}" alt="{{ service.title }}">
         <p>{{ service.price }}</p>
     
         <br/>
@@ -23,9 +23,9 @@
         <br/>
         <br/>
 
-        <a href="{{ path('service_index') }}">back to list</a>
+        <a href="{{ path('service_index') }}">retour à la liste</a>
 
-        <a href="{{ path('service_edit', {'id': service.id}) }}">edit</a>
+        <a href="{{ path('service_edit', {'id': service.id}) }}">editer</a>
 
         {{ include('service/_delete_form.html.twig') }}
     </div>

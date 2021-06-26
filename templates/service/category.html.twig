@@ -17,12 +17,12 @@
         {% for service in serviceOfCategory %}
 
             <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+            <img src="service/img/{{ service.image }}" class="card-img-top" alt="{{ service.title }}">
             <div class="card-body">
                 <h5 class="card-title">{{ service.title }}</h5>
                 <p class="card-text">{{ service.description }}</p>
                 <h5>{{ service.price }}</h5> 
-                <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-primary">view product</a>
+                <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-primary">voir le service</a>
             </div>
             </div>
 
