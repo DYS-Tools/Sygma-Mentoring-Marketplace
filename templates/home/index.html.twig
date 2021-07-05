@@ -8,33 +8,36 @@
 
     <div class="container">
 
-
         <h2> Tout les services </h2>
+        <hr>
         <br/>
         <br/>
+        <div class="services row d-flex justify-content-around ">
+            {% for service in services %}
 
-        {% for service in services %}
+                <div class="card service" style="width: 18rem;">
+                    <img src="service/img/{{ service.image }}" class="card-img-top" alt="{{ service.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ service.title }}</h5>
+                        <p class="card-text">{{ service.description }}</p>
+                        <h5>{{ service.price }} €</h5> 
+                        <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-primary">Voir le service</a>
+                    </div>
+                </div>
+                <br/><br/>
+            
+            {% endfor %}
 
-            <div class="card" style="width: 18rem;">
-            <img src="service/img/{{ service.image }}" class="card-img-top" alt="{{ service.title }}">
-            <div class="card-body">
-                <h5 class="card-title">{{ service.title }}</h5>
-                <p class="card-text">{{ service.description }}</p>
-                <h5>{{ service.price }}</h5> 
-                <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-primary">Voir le service</a>
-            </div>
-            </div>
-        <br/>
-        {% endfor %}
-        <br/> <br/> <br/>
-        <h3> To do : </h3>
+        </div>
         
 
+        <h3> To do : </h3>
+        <hr>
         <ul>
-        <li> Faire le paiement </li>
-        <li> Voir le dashboard user ( mes commandes en cours...) </li>
-        <li> Faire l'espace de service single </li>
-        <li> espace mon compte</li>
+            <li> ⌛ Faire le paiement </li>
+            <li> ⌛ Voir le dashboard user ( mes commandes en cours...) </li>
+            <li> ⌛ Faire l'espace de service single </li>
+            <li> ✔️Espace mon compte</li>
         </ul>
     
 
