@@ -40,6 +40,9 @@ class ServiceController extends AbstractController
 
             // for upload service 
             $fileName1 = $upload->uploadImgService($form->get('image')->getData());
+
+            $user = $this->getUser();
+            $service->setUser($user); 
             $service->setImage($fileName1);
 
             $entityManager->persist($service);
@@ -101,4 +104,18 @@ class ServiceController extends AbstractController
 
         return $this->redirectToRoute('service_index');
     }
+
+    /**
+     * page my service 
+     * @Route("/myService", name="my_service", methods={"GET"})
+     */
+    public function myServiceInAccount(ServiceRepository $serviceRepository): Response
+    {
+        $user = $this->getUser();
+
+        return $this->render('account/myService.html.twig', [
+            'services' => $serviceRepository->findBy(['user' => $user ]),
+        ]);
+    }
+    
 }
