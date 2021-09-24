@@ -9,6 +9,34 @@
     <div class="sygma-container">
         <br/>
         <br/>
+        <h3> Trouvez un microcours</h3>
+        <h7>(existant pour la recherche : foo, bar, ou baz)<h7>
+
+        <div
+            x-data="{
+                search: '',
+                display: false,
+        
+                items: ['foo', 'bar', 'baz'],
+        
+                get filteredItems() {
+                    return this.items.filter(
+                        i => i.startsWith(this.search)
+                    )
+                }
+            }"
+        >
+            <input x-model="search" @click="{display = true}" placeholder="Trouvez votre micro-cours">
+        
+            <ul x-show="display">
+                <template x-for="item in filteredItems" :key="item">
+                    <li x-text="item"></li> <!-- TODO: les cartes de services correspondantes -->
+                </template>
+            </ul>
+        </div>
+
+        <br/>
+        <br/>
         <h3> Les cours particuliers </h3>
         <hr>
         <br/>
