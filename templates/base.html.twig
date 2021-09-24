@@ -10,6 +10,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
         crossorigin="anonymous">
 
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}"
+
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
@@ -20,32 +22,53 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sygma-navbar">
             <a class="navbar-brand" href="{{ path('home') }}">Sygma</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mr-auto">
+                <!--
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ path('home') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_logout') }}">logout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Catégories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('service_new') }}">Publié un service</a>    
-                </li>
+                -->
+
+                {% if is_granted('ROLE_ADMIN') %}
+                {% endif %}
+                
+                {% if is_granted('ROLE_USER') %}
+                {% else  %}
+         
+                {% endif %}
                 </ul>
+
+                <!-- right element -->
+                {% if is_granted('ROLE_USER') %}
+
+                <li class="nav-item">
+                    <a class="nav-link navbar-text" href="{{ path('app_logout') }}">Déconnexion</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link navbar-text" href="{{ path('app_account') }}">Mon compte</a>    
+                </li>
+
+                {% else  %}
+
+                <li class="nav-item">
+                    <a class="nav-link navbar-text" href="{{ path('app_login') }}">Connexion</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link navbar-text" href="{{ path('app_register') }}">Inscription</a>
+                </li>
+                {% endif %}
+                
+
+                
+
             </div>
         </nav>
 

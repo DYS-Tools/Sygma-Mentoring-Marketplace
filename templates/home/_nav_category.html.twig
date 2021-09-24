@@ -1,0 +1,15 @@
+    <!-- Catégories nav -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sygma-navbar-sub">
+        <div class="collapse navbar-collapse " id="navbarNav">
+            <ul class="navbar-nav">
+
+            {% for category in categories %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('service_of_category', {'id': category.id}) }}">{{ category.name }}</a>    
+                </li>
+            {% endfor %}
+      
+            </ul>
+        </div>
+    </nav>

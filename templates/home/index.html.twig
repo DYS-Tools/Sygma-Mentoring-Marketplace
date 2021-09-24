@@ -4,31 +4,43 @@
 
 {% block body %}
 
-<div class="container">
+    {{ include('home/_nav_category.html.twig') }}
 
-    {% for service in services %}
+    <div class="sygma-container">
+        <br/>
+        <br/>
+        <h3> Les cours particuliers </h3>
+        <hr>
+        <br/>
+        <br/>
+        <div class="services service-container">
+            {% for service in services %}
 
-        <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{ service.title }}</h5>
-            <p class="card-text">{{ service.description }}</p>
-            <h5>{{ service.price }}</h5> 
-            <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-primary">view product</a>
+                <div class="card service" style="width: 18rem;">
+                    <img src="service/img/{{ service.image }}" class="card-img-top" alt="{{ service.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ service.title }}</h5>
+                        <p class="card-text">{{ service.description }}</p>
+                        <h5>{{ service.price }} €</h5> 
+                        <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-primary">Voir le service</a>
+                    </div>
+                </div>
+                <br/><br/>
+            
+            {% endfor %}
+
         </div>
-        </div>
-
-    {% endfor %}
-    <br/> <br/> <br/>
-    <h3> To do : </h3>
+        
+        <br/><br/>
+        <h3> To do : </h3>
+        <hr>
+        <ul>
+            <li> ⌛ Faire le paiement </li>
+            <li> ⌛ Voir le dashboard user ( mes commandes en cours...) </li>
+            <li> ⌛ Faire l'espace de service single </li>
+            <li> ✔️Espace mon compte</li>
+        </ul>
     
-    <ul>
-    <li> Revoir l'inscription ( bug ligne 44 security controller ) </li>
-    <li> Tester la connexion </li>
-    <li> Affichage des services par carte effectué </li>
-    <li> Premier formulaire de création de service effectué </li>
-    </ul>
-   
 
-</div>
+    </div>
 {% endblock %}

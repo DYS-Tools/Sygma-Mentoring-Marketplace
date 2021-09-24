@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Service;
 use App\Form\ServiceType;
 use App\Repository\ServiceRepository;
+use App\Service\Upload;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +29,7 @@ class ServiceController extends AbstractController
     /**
      * @Route("/new", name="service_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,Upload $upload): Response
     {
         $service = new Service();
         $form = $this->createForm(ServiceType::class, $service);
@@ -36,6 +37,14 @@ class ServiceController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            // for upload service 
+            $fileName1 = $upload->uploadImgService($form->get('image')->getData());
+
+            $user = $this->getUser();
+            $service->setUser($user); 
+            $service->setImage($fileName1);
+
             $entityManager->persist($service);
             $entityManager->flush();
 
@@ -61,12 +70,16 @@ class ServiceController extends AbstractController
     /**
      * @Route("/{id}/edit", name="service_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Service $service): Response
+    public function edit(Request $request, Service $service,Upload $upload): Response
     {
         $form = $this->createForm(ServiceType::class, $service);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $fileName1 = $upload->uploadImgService($form->get('image')->getData());
+            $service->setImage($fileName1);
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('service_index');
@@ -91,4 +104,18 @@ class ServiceController extends AbstractController
 
         return $this->redirectToRoute('service_index');
     }
+
+    /**
+     * page my service 
+     * @Route("/myService", name="my_service", methods={"GET"})
+     */
+    public function myServiceInAccount(ServiceRepository $serviceRepository): Response
+    {
+        $user = $this->getUser();
+
+        return $this->render('account/myService.html.twig', [
+            'services' => $serviceRepository->findBy(['user' => $user ]),
+        ]);
+    }
+    
 }
