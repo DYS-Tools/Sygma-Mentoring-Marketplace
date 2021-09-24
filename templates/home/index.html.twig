@@ -6,13 +6,14 @@
 
     {{ include('home/_nav_category.html.twig') }}
 
-    <div class="container">
-
-        <h2> Tout les services </h2>
+    <div class="sygma-container">
+        <br/>
+        <br/>
+        <h3> Les cours particuliers </h3>
         <hr>
         <br/>
         <br/>
-        <div class="services row d-flex justify-content-around ">
+        <div class="services service-container">
             {% for service in services %}
 
                 <div class="card service" style="width: 18rem;">
@@ -30,7 +31,7 @@
 
         </div>
         
-
+        <br/><br/>
         <h3> To do : </h3>
         <hr>
         <ul>

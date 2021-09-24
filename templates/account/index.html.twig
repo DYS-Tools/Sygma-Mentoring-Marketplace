@@ -1,27 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccountController!{% endblock %}
+{% block title %}Mon compte{% endblock %}
 
 {% block body %}
 
 <div class="example-wrapper">
-
-    {{ include('account/_nav_account.html.twig') }}
-
     <br/>
- 
     <div class="container">
-        <h1>Mon compte</h1>
+    <br/><br/>
+        {% if app.user %}
+            {% if is_granted('ROLE_USER') %}
+            <h3>Mon compte</h3>
+            <div class="account-container">
+                <div class="account-info">
+                    <h5> {{app.user.username }} </h5><br/>
+                    <p> 
+                    <p class="info-account-user"> 0 services créé</p>
+                    <p class="info-account-user"> 0 cours distribué</p>
+                    <hr>
+                    <a class="" href="#">Vos statistiques</a><br/>
+                    <a class="" href="#">cashflow</a><br/>
+                    <a class="" href="#">Gerer vos services</a><br/>
+                    </p>
+                </div>
+                <div class="account-service">
+                    <h5> Vos services </h5>
+                    <a class="" href="{ { url('service_new') }}">Ajouter un service</a> 
+                </div>
+            </div>
+            {% endif %}
+            <br/><br/>
+            {% if is_granted('ROLE_ADMIN') %}
+            <h3>Mon compte administrateur</h3>
+            <div class="account-container">
+                <div class="account-info">
+                    <h5> {{app.user.username }} </h5><br/>
+                    <p> 
+                    <a class="" href="#">Cashflow</a><br/>
+                    <a class="" href="#">Gestion des services</a><br/>
+                    <a class="" href="#">Statistiques</a>
+                    <hr>
+                    </p>
+                </div>
+                <!--
+                <div class="account-service">
+                    <h5> Vos services </h5>
+                    <a class="" href="{ { url('service_new') }}">Ajouter un service</a> 
+                </div>
+                -->
+            </div>
+            {% endif %}
 
-        <h2> Commandes passé </h2><br/>
-        <p> 
-        Mes commandes en cours : <br/>
-        </p>
-        <h2> Commandes passé </h2><br/>
-        <br/>
-
+        {% endif %}
     </div>
-
-
 </div>
+
 {% endblock %}
