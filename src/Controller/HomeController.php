@@ -15,9 +15,15 @@ class HomeController extends AbstractController
      */
     public function index(ServiceRepository $serviceRepository,CategoryRepository $categoryRepository): Response
     {
+        //for search engine
+        //$serviceStringArray = implode($serviceRepository->findAll());
+        $serviceStringArray = ['foo', 'bar', 'baz'];
+        //dd($serviceStringArray);
+
         return $this->render('home/index.html.twig', [
             'services' => $serviceRepository->findAll(),
             'categories' => $categoryRepository->findAll(),
+            'servicesStringArray' => $serviceStringArray,
 
         ]);
     }

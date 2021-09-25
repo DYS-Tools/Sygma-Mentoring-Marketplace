@@ -19,6 +19,9 @@
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
+
+        <!-- AlpineJS CDN -->
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </head>
     <body>
 
@@ -73,5 +76,35 @@
         </nav>
 
         {% block body %}{% endblock %}
+
+        <footer>
+            <div class="column">
+                <ul>
+                    <li> link 1</li>
+                    <li> link 2</li>
+                    <li> link 3</li>
+                    <li> link 4</li>
+                </ul>
+            </div>
+            <div class="column">
+                <ul>
+                    <li> link 1</li>
+                    <li> link 2</li>
+                    <li> link 3</li>
+                    <li> link 4</li>
+                </ul>
+            </div>
+            <div class="column">
+                <ul>
+                    <li> link 1</li>
+                    <li> link 2</li>
+                    <li> link 3</li>
+                    <li> link 4</li>
+                </ul>
+            </div>
+        </footer>
+        <div class="last-footer">
+            <p>Copyright © 2021 - Sygma</p>
+        </div>
     </body>
 </html>

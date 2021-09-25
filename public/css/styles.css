@@ -7,6 +7,10 @@ CSS for Sygma Web Service
 */
 
 /*** 0. General ***/
+html{
+  margin: 0;
+  padding: 0;
+}
 a{
   color: rgba(69, 187, 69, 0.753);
 }
@@ -46,6 +50,56 @@ a:hover{
   margin-bottom: 4%;
 }
 
+/*** X. Service grid ***/
+.card{
+  overflow: hidden;
+  padding-bottom: 0;
+  transition-duration: 0.3s;
+}
+.card:hover{
+  transform: translateY(-4px);
+  transition-duration: 0.3s;
+}
+.services a{
+  color: black;
+}
+.service .card-body{
+  margin: 0;
+  padding: 0;
+}
+.service .card-title{
+  font-weight: 600;
+  font-family: 'Courier New', Courier, monospace;
+  padding-top: 5%;
+  padding-left: 5%;
+}
+.service .card-text{
+  color: rgba(15,15,15,1);
+  font-weight: 200;
+  padding-left: 5%;
+}
+.service h6{/* price */
+  margin-bottom: 8%;
+  padding-right: 15%;
+  text-align: end;
+  font-size: 1.5em;
+} 
+.call-to-action{
+  width: 100%;
+  margin: 0!important;
+  padding: 15px;
+  background-color: rgba(109, 237, 109, 0.644);
+  color: black;
+}
+.call-to-action:hover{
+  transition-duration: 0.4s;
+  background-color: rgba(15, 73, 15, 0.644);
+  color:antiquewhite;
+
+}
+
+
+
 /*** 3. Account ***/
 .account-container{
   border: 1px solid rgba(69, 187, 69, 0.753);
@@ -63,4 +117,34 @@ a:hover{
   margin: 0;
   padding: 0;
   color: gray;
+}
+
+
+/*** 4. Footer ***/
+footer{
+  background-color: rgba(69, 187, 69, 0.753);
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  justify-content: center;
+}
+footer div{
+  color: white;
+  font-size: 1.2em;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+footer li{
+  text-decoration: none;
+  list-style: none;
+}
+.last-footer{
+  text-align: center;
+  background-color: rgba(15,15,15,1);
+  color: white;
+  width: 100%;
+  margin-bottom: 0;
 }
