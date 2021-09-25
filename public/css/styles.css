@@ -7,6 +7,10 @@ CSS for Sygma Web Service
 */
 
 /*** 0. General ***/
+html{
+  margin: 0;
+  padding: 0;
+}
 a{
   color: rgba(69, 187, 69, 0.753);
 }
@@ -63,4 +67,34 @@ a:hover{
   margin: 0;
   padding: 0;
   color: gray;
+}
+
+
+/*** 4. Footer ***/
+footer{
+  background-color: rgba(69, 187, 69, 0.753);
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  justify-content: center;
+}
+footer div{
+  color: white;
+  font-size: 1.2em;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+footer li{
+  text-decoration: none;
+  list-style: none;
+}
+.last-footer{
+  text-align: center;
+  background-color: rgba(15,15,15,1);
+  color: white;
+  width: 100%;
+  margin-bottom: 0;
 }
