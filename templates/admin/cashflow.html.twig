@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <br/>
+    <div class="container">
+    <br/><br/>
+        {% if app.user %}
+            {% if is_granted('ROLE_ADMIN') %}
+            <h3>Gestion de l'argent dans l'application (admin)</h3>
+            <br/>
+            <div class="account-container">
+                <div class="">
+                    <h5> {{app.user.username }} </h5><br/>
+                    <p> 
+                    <p class="info-account-user"> {{ moneyInCirculation }}€ en circulation entre les utilisateurs actuellement</p>
+                    <p class="info-account-user"> {{ availableRoyalties }}€ de royalties disponible</p>
+                    <p class="info-account-user"> {{ totalRoyalties }}€ total des royalties générés</p>
+                    <hr>
+                    <p class="info-account-user"> Mis a jour le {{ updateDate }}</p>
+                    <hr>
+                    <p> Frais de transaction par commande : 10%</p>
+                </div>
+            </div>
+            {% else %}
+             <p> Vous n'avez pas accès a ces données </p>
+            {% endif %}
+
+        {% endif %}
+        <br/><br/>
+    </div>
+</div>
+
+{% endblock %}
