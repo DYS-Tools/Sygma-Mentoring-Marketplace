@@ -19,12 +19,17 @@
                     <p class="info-account-user"> 0 cours distribué</p>
                     <hr>
                     <a class="" href="#">Vos statistiques</a><br/>
-                    <a class="" href="#">Paramètre de paiement</a><br/>
+                    <a class="" href="{{ url('account_payment') }}">Paramètre de paiement</a><br/>
                     <a class="" href="#">Gerer vos services</a><br/>
                     </p>
                 </div>
                 <div class="account-service">
                     <h5> Vos services </h5>
+                    {% for service in services %}
+                        <hr>
+                        <a href="{{ path('service_show', {'id': service.id}) }}"> {{service.title}} </a>
+                    {% endfor %}
+                    <hr><hr>
                     <a class="" href="{ { url('service_new') }}">Ajouter un service</a> 
                 </div>
             </div>
@@ -52,6 +57,7 @@
             {% endif %}
 
         {% endif %}
+        <br/><br/>
     </div>
 </div>
 

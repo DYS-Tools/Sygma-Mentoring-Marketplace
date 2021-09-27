@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <br/>
+    <div class="container">
+    <br/><br/>
+        {% if app.user %}
+            {% if is_granted('ROLE_USER') %}
+            <h3>Vos paramètres de paiement</h3>
+            <div class="account-container">
+                <div class="account-info">
+                    <h5> {{app.user.username }} </h5><br/>
+                    <p> 
+                    <p class="info-account-user"> adresse paypal pour recevoir les paiement : {{app.user.username }}</p>
+                    <hr>
+                    <a class="" href="{{ url('app_account') }}">Retour</a> 
+                    </p>
+                </div>
+            </div>
+            {% endif %}
+            <br/><br/>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
