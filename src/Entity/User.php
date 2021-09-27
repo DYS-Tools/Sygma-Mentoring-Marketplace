@@ -48,6 +48,11 @@ class User implements UserInterface
      */
     private $services;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $moneyOnAccount;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -202,6 +207,18 @@ class User implements UserInterface
                 $service->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMoneyOnAccount(): ?float
+    {
+        return $this->moneyOnAccount;
+    }
+
+    public function setMoneyOnAccount(float $moneyOnAccount): self
+    {
+        $this->moneyOnAccount = $moneyOnAccount;
 
         return $this;
     }
