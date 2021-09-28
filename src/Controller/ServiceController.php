@@ -11,23 +11,23 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/service")
- */
 class ServiceController extends AbstractController
 {
     /**
-     * @Route("/", name="service_index", methods={"GET"})
+     * page my service 
+     * @Route("/myService", name="my_service", methods={"GET"})
      */
-    public function index(ServiceRepository $serviceRepository): Response
+    public function myServiceInAccount(ServiceRepository $serviceRepository): Response
     {
-        return $this->render('service/index.html.twig', [
-            'services' => $serviceRepository->findAll(),
+        $user = $this->getUser();
+
+        return $this->render('account/myService.html.twig', [
+            'services' => $serviceRepository->findBy(['user' => $user ]),
         ]);
     }
-
+    
     /**
-     * @Route("/new", name="service_new", methods={"GET","POST"})
+     * @Route("/service_new", name="service_new", methods={"GET","POST"})
      */
     public function new(Request $request,Upload $upload): Response
     {
@@ -48,7 +48,7 @@ class ServiceController extends AbstractController
             $entityManager->persist($service);
             $entityManager->flush();
 
-            return $this->redirectToRoute('service_index');
+            return $this->redirectToRoute('my_service');
         }
 
         return $this->render('service/new.html.twig', [
@@ -58,7 +58,7 @@ class ServiceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="service_show", methods={"GET"})
+     * @Route("/service/{id}", name="service_show", methods={"GET"})
      */
     public function show(Service $service): Response
     {
@@ -68,7 +68,7 @@ class ServiceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="service_edit", methods={"GET","POST"})
+     * @Route("/service/{id}/edit", name="service_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Service $service,Upload $upload): Response
     {
@@ -82,7 +82,7 @@ class ServiceController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('service_index');
+            return $this->redirectToRoute('my_service');
         }
 
         return $this->render('service/edit.html.twig', [
@@ -92,7 +92,7 @@ class ServiceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="service_delete", methods={"POST"})
+     * @Route("/service/{id}", name="service_delete", methods={"POST"})
      */
     public function delete(Request $request, Service $service): Response
     {
@@ -102,20 +102,7 @@ class ServiceController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('service_index');
-    }
-
-    /**
-     * page my service 
-     * @Route("/myService", name="my_service", methods={"GET"})
-     */
-    public function myServiceInAccount(ServiceRepository $serviceRepository): Response
-    {
-        $user = $this->getUser();
-
-        return $this->render('account/myService.html.twig', [
-            'services' => $serviceRepository->findBy(['user' => $user ]),
-        ]);
+        return $this->redirectToRoute('my_service');
     }
     
 }

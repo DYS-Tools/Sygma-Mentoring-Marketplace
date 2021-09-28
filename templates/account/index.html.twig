@@ -20,7 +20,7 @@
                     <hr>
                     <a class="" href="#">Vos statistiques</a><br/>
                     <a class="" href="{{ url('account_payment') }}">Paramètre de paiement</a><br/>
-                    <a class="" href="{ { url('service_index') }}">Gerer vos services</a><br/>
+                    <a class="" href="{ { url('my_service') }}">Gerer vos services</a><br/>
                     </p>
                 </div>
                 <div class="account-service">
@@ -30,7 +30,7 @@
                         <a href="{{ path('service_show', {'id': service.id}) }}"> {{service.title}} </a>
                     {% endfor %}
                     <hr><hr>
-                    <a class="" href="{ { url('service_new') }}">Ajouter un service</a> 
+                    <a class="" href="{{ url('service_new') }}">Ajouter un service</a> 
                 </div>
             </div>
             {% endif %}
@@ -42,7 +42,7 @@
                     <h5> {{app.user.username }} </h5><br/>
                     <p> 
                     <a class="" href="{{ url('cashflow') }}">Cashflow & statistiques</a><br/>
-                    <a class="" href="{ { url('service_index') }}">Gestion des services</a><br/>
+                    <a class="" href="{{ url('my_service') }}">Gestion des services</a><br/>
                     <hr>
                     </p>
                 </div>
