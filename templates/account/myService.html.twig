@@ -1,31 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{{ include('account/_nav_account.html.twig') }}
-
+{% block body %}
     <div class="container">
 
-        <h2> Tout les services </h2>
+        <br/><br/>
+        <h2> Mes services </h2>
         <hr>
         <br/>
         <br/>
-        <div class="services row d-flex justify-content-around ">
+        <div class="services service-container">
             {% for service in services %}
-
+                <a href="{{ path('service_show', {'id': service.id}) }}"> 
                 <div class="card service" style="width: 18rem;">
                     <img src="service/img/{{ service.image }}" class="card-img-top" alt="{{ service.title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ service.title }}</h5>
                         <p class="card-text">{{ service.description }}</p>
-                        <h5>{{ service.price }} €</h5> 
-                        <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-primary">Voir le service</a>
+                        <h6>{{ service.price }} €</h6> 
+                        <br/><br/>
+                        <a href="{{ path('service_show', {'id': service.id}) }}" class="call-to-action" style="display:none;"> Voir le cours</a>
+                        <a href="{{ path('service_edit', {'id': service.id}) }}" class="call-to-action" >Modifier le service</a>
+                        <br/><br/>
 
-                        <a href="{{ path('service_edit', {'id': service.id}) }}" class="btn btn-primary">Voir le service</a> <!-- edit service --> 
+                        <div class="call-to-action">Voir le cours</div>
                     </div>
                 </div>
+                </a>
                 <br/><br/>
-            
             {% endfor %}
 
         </div>
-        
+
+        <br/><br/>
+        </div>
     </div>
+{% endblock %}
