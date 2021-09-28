@@ -20,7 +20,7 @@
                     <hr>
                     <a class="" href="#">Vos statistiques</a><br/>
                     <a class="" href="{{ url('account_payment') }}">Paramètre de paiement</a><br/>
-                    <a class="" href="{ { url('my_service') }}">Gerer vos services</a><br/>
+                    <a class="" href="{{ url('my_service') }}">Gerer vos services</a><br/>
                     </p>
                 </div>
                 <div class="account-service">
@@ -39,7 +39,7 @@
             <h3>Mon compte administrateur</h3>
             <div class="account-container">
                 <div class="account-info">
-                    <h5> {{app.user.username }} </h5><br/>
+                    <h5> {{ app.user.username }} </h5><br/>
                     <p> 
                     <a class="" href="{{ url('cashflow') }}">Cashflow & statistiques</a><br/>
                     <a class="" href="{{ url('my_service') }}">Gestion des services</a><br/>
