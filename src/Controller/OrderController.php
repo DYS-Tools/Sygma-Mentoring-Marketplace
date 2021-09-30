@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Service;
 use App\Form\ServiceType;
 use App\Repository\ServiceRepository;
+use App\Service\Payment;
+use Doctrine\Common\Annotations\PhpParser;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,5 +38,26 @@ class OrderController extends AbstractController
         ]);
         
 
+    }
+
+    /**
+     * @Route("valid/pay/", name="succes_pay")
+     */
+    public function succesPayment(Payment $payment,Request $request, PhpParser $phpParser): Response
+    {
+        return $this->render('Payment/SuccessPayment.html.twig', [
+          
+        ]);
+    }
+
+    /**
+     * @Route("invalid/pay/", name="invalid_pay")
+     */
+    public function invalidPayment(Payment $payment,Request $request, PhpParser $phpParser): Response
+    {
+
+        return $this->render('Payment/InvalidPayment.html.twig', [
+          
+        ]);
     }
 }
